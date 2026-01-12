@@ -29,11 +29,18 @@ print(total_monthly_precipitation)
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(total_monthly_precipitation, file, indent=4) 
 
-#.2.1
+#.2.1 total yearly percipitation 
 total_yearly_precipitation = 0
 for measurement in seattle_data:
     total_yearly_precipitation += measurement['value']
 print(f'Total yearly precipitation in Seattle is {total_yearly_precipitation}')
 
    
+# 2.2 relative monthly precipitation.
+
+relative_monthly_precipitation = {}
+for  month in total_monthly_precipitation:
+    relative_monthly_precipitation[month] = total_monthly_precipitation[month]/ total_yearly_precipitation
+print(f'The relative monthly percipitation in seatle for each month is {relative_monthly_precipitation}')
+
 
