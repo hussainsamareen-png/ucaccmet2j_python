@@ -3,11 +3,11 @@
 import json
 import csv
 
-with open ('precipitation.json', encoding = 'utf-8') as file:
+with open ('precipitation.json', encoding = 'utf-8') as file: # loading json file
     data = json.load(file)
 
-print(data)
-print(type(data))
+# print(data). ---> checking measure
+# print(type(data))
 results_dic ={}
 with open('stations.csv', mode = 'r') as csvfile:      # reading csv files
     per_line = csvfile.readline()
@@ -82,7 +82,7 @@ for city in results_dic:
             'relative_monthly_precipitation': relative_monthly_precipitation_list,
             'relative_yearly_precipitation': relative_yearly_precipitation
     }
-print(results_dic[city])
+# print(results_dic[city])
                             
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(results_dic, file, indent=4) 
