@@ -5,6 +5,8 @@ with open ('precipitation.json', encoding = 'utf-8') as file:
 print(data)
 print(type(data))
 
+seattle = {}
+
 # 0.3: filtering for seattle
 
 seattle_data = []
@@ -21,9 +23,9 @@ month = 1
 while month <= 12:
     total_monthly_precipitation[month] = 0
     for measurement in seattle_data:
-        if measurement["date"].startswith(f"2010-0{month}"):
+        if measurement["date"].startswith(f"2010-0{month}-"):
             total_monthly_precipitation[month] += measurement['value']
-        elif measurement["date"].startswith(f"2010-{month}"):
+        elif measurement["date"].startswith(f"2010-{month}-"):
             total_monthly_precipitation[month] += measurement['value']
     month += 1
 print(total_monthly_precipitation)
@@ -44,5 +46,11 @@ relative_monthly_precipitation = {}
 for  month in total_monthly_precipitation:
     relative_monthly_precipitation[month] = total_monthly_precipitation[month]/ total_yearly_precipitation
 print(f'The relative monthly percipitation in seatle for each month is as follows {relative_monthly_precipitation}')
+
+# seattle = {'station': GHCND:US1WAKG0038,
+#            'state': state,
+#             'total_monthly_precipitatio': total_monthly_precipitation,
+#             'total_yearly_precipitation': }
+                            
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(relative_monthly_precipitation, file, indent=4) 
