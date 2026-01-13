@@ -23,6 +23,8 @@ while month <= 12:
     for measurement in seattle_data:
         if measurement["date"].startswith(f"2010-0{month}"):
             total_monthly_precipitation[month] += measurement['value']
+        elif measurement["date"].startswith(f"2010-{month}"):
+            total_monthly_precipitation[month] += measurement['value']
     month += 1
 print(total_monthly_precipitation)
 
@@ -41,6 +43,6 @@ print(f'Total yearly precipitation in Seattle is {total_yearly_precipitation}')
 relative_monthly_precipitation = {}
 for  month in total_monthly_precipitation:
     relative_monthly_precipitation[month] = total_monthly_precipitation[month]/ total_yearly_precipitation
-print(f'The relative monthly percipitation in seatle for each month is {relative_monthly_precipitation}')
-
-
+print(f'The relative monthly percipitation in seatle for each month is as follows {relative_monthly_precipitation}')
+with open('results.json', 'w', encoding='utf-8') as file:
+    json.dump(relative_monthly_precipitation, file, indent=4) 

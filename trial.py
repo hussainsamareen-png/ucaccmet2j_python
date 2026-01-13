@@ -1,29 +1,75 @@
-import json
+# import json
 
-with open ('precipitation.json', encoding = 'utf-8') as file:
-    data = json.load(file)
-print(data)
-print(type(data))
-
-# 0.3: filtering for seattle
-seattle_data = []
-for element in data:
-    if element['station'] == 'GHCND:US1WAKG0038':
-        seattle_data.append(element)
-# print(seattle_data)
-
-total_monthly_precipitation = {}
-month = 1
+# with open ('precipitation.json', encoding = 'utf-8') as file:
+#     data = json.load(file)
+# # print(data)
+# # print(type(data))
 
 
-while month <= 12:
-    total_monthly_precipitation[month] = 0
+# # 0.3: filtering for seattle
 
-    for measurement in seattle_data:
-      
-        if measurement["date"].startswith(f"2010-0{month}"):
-            total_monthly_precipitation[month] += measurement['value']
+# results = {}
 
-    month += 1
+# stations = set() ### distinct operation
+# for element in data:
+#     if element['station'] not in stations:
+#     stations.add(element['station'])
 
-print(total_monthly_precipitation)
+
+#     for station in stations:
+#         for element in data:
+#             station_filter = []
+#             if element['station'] == station:
+#                 station_filter.append(element)
+
+
+# total_monthly_precipitation = {}
+# month = 1
+#     while month <= 12:
+#         total_monthly_precipitation[month] = 0
+#         for measurement in station_filter:
+#             if measurement["date"].startswith(f"2010-0{month}"):
+#                 total_monthly_precipitation[month] += measurement['value']
+#                 month += 1
+
+
+
+    
+  
+
+
+
+# # Percipitaion per month
+
+# total_monthly_precipitation = {}
+# month = 1
+
+# while month <= 12:
+#     total_monthly_precipitation[month] = 0
+#     for measurement in seattle_data:
+#         if measurement["date"].startswith(f"2010-0{month}"):
+#             total_monthly_precipitation[month] += measurement['value']
+#     month += 1
+# print(total_monthly_precipitation)
+
+
+
+# #.2.1 total yearly percipitation 
+# total_yearly_precipitation = 0
+# for measurement in seattle_data:
+#     total_yearly_precipitation += measurement['value']
+# print(f'Total yearly precipitation in Seattle is {total_yearly_precipitation}')
+
+   
+# # 2.2 relative monthly precipitation.
+
+# relative_monthly_precipitation = {}
+# for  month in total_monthly_precipitation:
+#     relative_monthly_precipitation[month] = total_monthly_precipitation[month]/ total_yearly_precipitation
+# print(f'The relative monthly percipitation in seatle for each month is {relative_monthly_precipitation}')
+
+
+
+#
+
+
