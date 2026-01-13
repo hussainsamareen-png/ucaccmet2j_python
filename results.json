@@ -2,7 +2,7 @@
     "Cincinnati": {
         "station": "GHCND:USW00093814",
         "state": "OH",
-        "total_monthly_precipitatio": [
+        "total_monthly_precipitation": [
             512,
             588,
             889,
@@ -36,7 +36,7 @@
     "Seattle": {
         "station": "GHCND:US1WAKG0038",
         "state": "WA",
-        "total_monthly_precipitatio": [
+        "total_monthly_precipitation": [
             1693,
             730,
             870,
@@ -70,7 +70,7 @@
     "Maui": {
         "station": "GHCND:USC00513317",
         "state": "HI",
-        "total_monthly_precipitatio": [
+        "total_monthly_precipitation": [
             362,
             201,
             861,
@@ -104,7 +104,7 @@
     "San Diego": {
         "station": "GHCND:US1CASD0032",
         "state": "CA",
-        "total_monthly_precipitatio": [
+        "total_monthly_precipitation": [
             1323,
             853,
             144,

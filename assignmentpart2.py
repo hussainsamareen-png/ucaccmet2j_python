@@ -11,7 +11,7 @@ with open ('precipitation.json', encoding = 'utf-8') as file: # loading json fil
 results_dic ={}
 with open('stations.csv', mode = 'r') as csvfile:      # reading csv files
     per_line = csvfile.readline()
-    #information = csv.DictReader(csvfile)
+    #information = csv.DictReader(csvfile) --> do manually
     for lines in csvfile:
         line_strip = lines.strip()
         lines_split = line_strip.split(",")
@@ -77,17 +77,18 @@ for city in results_dic:
     results_dic[city] = {
             'station': station,
             'state': state,
-            'total_monthly_precipitatio': total_monthly_precipitation_list,
+            'total_monthly_precipitation': total_monthly_precipitation_list,
             'total_yearly_precipitation': total_yearly_precipitation,
             'relative_monthly_precipitation': relative_monthly_precipitation_list,
             'relative_yearly_precipitation': relative_yearly_precipitation
     }
-# print(results_dic[city])
+
                             
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(results_dic, file, indent=4) 
           
-          
+## the plots dont work due to some error in the plot_results.py script. but the installation went through.
+
    
 
 
