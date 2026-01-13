@@ -54,3 +54,11 @@
 #                     'relative_monthly_precipitation': relative_monthly_precipitation}
 # with open('results.json', 'w', encoding='utf-8') as file:
 #     json.dump(results, file, indent=4) 
+
+# #results[location] = {
+#         'station': station_code,
+#         'state': state,
+#         'total_monthly_precipitation': total_monthly_precipitation,
+#         'total_yearly_precipitation': total_yearly_precipitation,
+#         'relative_monthly_precipitation': relative_monthly_precipitation
+#     }
