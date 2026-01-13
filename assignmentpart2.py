@@ -9,7 +9,7 @@ with open ('precipitation.json', encoding = 'utf-8') as file:
 print(data)
 print(type(data))
 results_dic ={}
-with open('stations.csv', mode = 'r') as csvfile:
+with open('stations.csv', mode = 'r') as csvfile:      # reading csv files
     per_line = csvfile.readline()
     #information = csv.DictReader(csvfile)
     for lines in csvfile:
@@ -20,7 +20,7 @@ with open('stations.csv', mode = 'r') as csvfile:
         state = lines_split[1]
         station = lines_split[2]
         
-        results_dic[city] = {
+        results_dic[city] = {           # converting into dictionary
             'state': state,
             'station': station
             
@@ -31,13 +31,14 @@ print(results_dic)
 for city in results_dic:
     city_dict = results_dic[city]
     station = city_dict['station']
+    state = city_dict['state']
     city_data = []
     total_yearly = 0
     for element in data:
         if element['station'] == station:
             city_data.append(element)
         total_yearly += element["value"]
-            # print(city_data)
+            # print(city_data) ----> checking measure
 
 # monthly precipitation
     total_monthly_precipitation = {}
@@ -47,8 +48,9 @@ for city in results_dic:
         if month not in total_monthly_precipitation:
             total_monthly_precipitation[month] = measurement["value"]
         else:
-            total_monthly_precipitation[month] += measurement["value"]
-    # print(total_monthly_precipitation)
+            total_monthly_precipitation[month] += measurement["value"]  
+    total_monthly_precipitation_list  = list(total_monthly_precipitation.values()) # converting to list
+    # print(total_monthly_precipitation_list)
 
    
     
@@ -62,24 +64,31 @@ for city in results_dic:
     relative_monthly_precipitation = {}
     for month in total_monthly_precipitation:
         relative_monthly_precipitation[month] = total_monthly_precipitation[month]/ total_yearly_precipitation
-        
-    # print(relative_monthly_precipitation)
+    relative_monthly_precipitation_list = list(relative_monthly_precipitation.values()) # converting to list
+    # print(relative_monthly_precipitation_list)
 
 
     #relative yearly precipitation
-    for city in results_dic:
-        relative_yearly_precipitation = total_yearly_precipitation / total_yearly
+   
+    relative_yearly_precipitation = total_yearly_precipitation / total_yearly
     print(relative_yearly_precipitation)
 
-
-# results = {'station': station,
-#                         'total_monthly_precipitation': total_monthly_precipitation,
-#                         'total_yearly precipitation': total_yearly_precipitation,
-#                         'relative_monthly_precipitation': relative_monthly_precipitation,
-#                         }
-# print(results)
-
-
+  
+    results_dic[city] = {
+            'station': station,
+            'state': state,
+            'total_monthly_precipitatio': total_monthly_precipitation_list,
+            'total_yearly_precipitation': total_yearly_precipitation,
+            'relative_monthly_precipitation': relative_monthly_precipitation_list,
+            'relative_yearly_precipitation': relative_yearly_precipitation
+    }
+print(results_dic[city])
+                            
+with open('results.json', 'w', encoding='utf-8') as file:
+    json.dump(results_dic, file, indent=4) 
+          
+          
+   
 
 
 
@@ -93,12 +102,6 @@ for city in results_dic:
 
 
 
-# stations = []
-# stations = set() ### distinct operation
-# for element in data:
-#     if element['station'] not in stations:
-#         stations.add(element['station'])
-# print(stations)
 
 
 
