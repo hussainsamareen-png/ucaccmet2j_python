@@ -1,3 +1,5 @@
+
+### not the final project
 import json
 
 with open ('precipitation.json', encoding = 'utf-8') as file:
@@ -63,3 +65,4 @@ results = {
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(results, file, indent=4) 
 
+## dont read
