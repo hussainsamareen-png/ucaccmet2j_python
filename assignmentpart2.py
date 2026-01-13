@@ -10,6 +10,16 @@ results = {}
 stations = set() ### distinct operation
 for element in data:
     stations.add(element['station'])
+print(stations)
+
+#filtering by station
+for station in stations:
+    station_data = []
+
+
+
+
+
 
 
 
